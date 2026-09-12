@@ -70,6 +70,18 @@
 
 ]]--
 
+---------/// Custom Configuration (getgenv().script_key = "123") ///---------
+
+getgenv().premium = true         -- เปิดโหมด Premium (ข้ามข้อจำกัด 6 ชั่วโมง)
+getgenv().auto_rejoin = true     -- เปิดใช้งานระบบ Rejoin อัตโนมัติเมื่อหลุด
+getgenv().whitescreen = false    -- ปรับเป็น true หากต้องการเปิดหน้าจอขาวเพื่อประหยัดสเปก
+
+---------/// Set All Config to Global ///---------
+
+getgenv().script_key = license or nil
+getgenv().skip_loading = skip_loading or false
+
+-- (โค้ดส่วนที่เหลือทั้งหมดต่อลงมาทางด้านล่างตามปกติ)
 for alchemy, hub in pairs({
 function(is) return is end
 }) do if not hub(true) then
