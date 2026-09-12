@@ -70,18 +70,6 @@
 
 ]]--
 
----------/// Custom Configuration (getgenv().script_key = "123") ///---------
-
-getgenv().premium = true         -- เปิดโหมด Premium (ข้ามข้อจำกัด 6 ชั่วโมง)
-getgenv().auto_rejoin = true     -- เปิดใช้งานระบบ Rejoin อัตโนมัติเมื่อหลุด
-getgenv().whitescreen = false    -- ปรับเป็น true หากต้องการเปิดหน้าจอขาวเพื่อประหยัดสเปก
-
----------/// Set All Config to Global ///---------
-
-getgenv().script_key = license or nil
-getgenv().skip_loading = skip_loading or false
-
--- (โค้ดส่วนที่เหลือทั้งหมดต่อลงมาทางด้านล่างตามปกติ)
 for alchemy, hub in pairs({
 function(is) return is end
 }) do if not hub(true) then
@@ -90,22 +78,25 @@ return end end --[[ASOE.]]
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game.Players.LocalPlayer
 
+---------/// Set Custom Config ///---------
+
+getgenv().script_key = "123"      -- ใส่ Key ของคุณตรงนี้
+getgenv().premium = true          -- เปิด Premium
+getgenv().auto_rejoin = true      -- เปิด Auto Rejoin
+getgenv().whitescreen = false     -- ปิด WhiteScreen
+
 ---------/// Set All Config to Global ///---------
 
-getgenv().script_key = license or nil
 getgenv().skip_loading = skip_loading or false
 getgenv().auto_execute = auto_execute or false
 getgenv().disable_auto_exec = disable_auto_exec or false
 getgenv().delay_execute = delay_execute or 0
 
-getgenv().whitescreen = whitescreen or false
 getgenv().blackscreen = blackscreen or false
-getgenv().auto_rejoin = auto_rejoin or false
 getgenv().streamer_mode = streamer_mode or false
 getgenv().fully_rejoin = fully_rejoin or false
 getgenv().avoid_player = avoid_player or nil
 
-getgenv().premium = premium
 getgenv().farmer_mode = farmer_mode or false
 getgenv().oneclick = oneclick or kaitan or kaitun or false
 
@@ -798,3 +789,4 @@ if not(getgenv().run_time) then
     elseif rollback then alchemy['.npm run build'](loadService("rollback", alchemy['.npm run rollback']()))
     else getgenv().loader = alchemy['.npm run game'](); getgenv().loadService = loadService; (load or loadstring)(getGit('Alchemy', 'keysystem/nexora.lua'))(); end;
 end
+
